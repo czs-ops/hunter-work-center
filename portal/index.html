@@ -22,11 +22,11 @@
           <span class="nav-icon" aria-hidden="true">⌂</span>
           <span>聚合首页</span>
         </button>
-        <button class="nav-button" type="button" data-title="猎手运营" data-url="https://czs-ops.github.io/hunter-work-center/">
+        <button class="nav-button" type="button" data-title="猎手运营" data-frame="hunter-frame">
           <span class="nav-icon" aria-hidden="true">猎</span>
           <span>猎手运营</span>
         </button>
-        <button class="nav-button" type="button" data-title="基金运营" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">
+        <button class="nav-button" type="button" data-title="基金运营" data-frame="fund-frame">
           <span class="nav-icon" aria-hidden="true">基</span>
           <span>基金运营</span>
         </button>
@@ -39,16 +39,22 @@
       <div class="loading-panel" id="loading-panel" hidden>
         <strong id="loading-title">正在打开平台</strong>
       </div>
-      <iframe class="content-frame" id="content-frame" title="运营内容展示" hidden></iframe>
+      <iframe class="content-frame" id="hunter-frame" title="猎手运营" src="https://czs-ops.github.io/hunter-work-center/" hidden></iframe>
+      <iframe class="content-frame" id="fund-frame" title="基金运营" src="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" hidden></iframe>
     </section>
   </main>
 
   <script>
-    const frame = document.getElementById("content-frame");
     const home = document.getElementById("portal-home");
     const loadingPanel = document.getElementById("loading-panel");
     const loadingTitle = document.getElementById("loading-title");
     const navButtons = document.querySelectorAll(".nav-button");
+    const frames = {
+      "hunter-frame": document.getElementById("hunter-frame"),
+      "fund-frame": document.getElementById("fund-frame")
+    };
+    const loadedFrames = new Set();
+    let activeFrameId = "";
 
     function setActiveButton(title) {
       navButtons.forEach((button) => {
@@ -58,26 +64,39 @@
       });
     }
 
+    function hideFrames() {
+      Object.values(frames).forEach((frame) => {
+        frame.hidden = true;
+      });
+      activeFrameId = "";
+    }
+
     function showHome() {
-      frame.hidden = true;
-      frame.removeAttribute("src");
+      hideFrames();
       loadingPanel.hidden = true;
       home.hidden = false;
       setActiveButton("聚合首页");
     }
 
-    function showPlatform(title, url) {
+    function showPlatform(title, frameId) {
+      const frame = frames[frameId];
       home.hidden = true;
-      loadingTitle.textContent = `正在打开${title}`;
-      loadingPanel.hidden = false;
+      hideFrames();
+      activeFrameId = frameId;
+      loadingTitle.textContent = loadedFrames.has(frameId) ? `正在切换到${title}` : `正在打开${title}`;
+      loadingPanel.hidden = loadedFrames.has(frameId);
       frame.title = title;
       frame.hidden = false;
-      frame.src = url;
       setActiveButton(title);
     }
 
-    frame.addEventListener("load", () => {
-      loadingPanel.hidden = true;
+    Object.entries(frames).forEach(([frameId, frame]) => {
+      frame.addEventListener("load", () => {
+        loadedFrames.add(frameId);
+        if (activeFrameId === frameId) {
+          loadingPanel.hidden = true;
+        }
+      });
     });
 
     document.querySelector(".platform-nav").addEventListener("click", (event) => {
@@ -89,7 +108,7 @@
         return;
       }
 
-      showPlatform(button.dataset.title, button.dataset.url);
+      showPlatform(button.dataset.title, button.dataset.frame);
     });
   </script>
 </body>
