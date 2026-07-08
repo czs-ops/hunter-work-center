@@ -3,62 +3,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>运营工具入口</title>
+  <title>运营中台</title>
   <link rel="stylesheet" href="./styles.css">
 </head>
 <body>
-  <main class="shell" aria-label="运营工具入口">
-    <aside class="sidebar" aria-label="平台列表">
+  <main class="shell" aria-label="运营中台">
+    <aside class="sidebar" aria-label="运营平台菜单">
       <div class="brand">
         <span class="brand-mark" aria-hidden="true">运</span>
         <div>
           <p class="eyebrow">统一入口</p>
-          <h1>运营工具</h1>
+          <h1>运营中台</h1>
         </div>
       </div>
+
       <nav class="platform-nav" aria-label="运营平台">
-        <a class="nav-item active" href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">
-          <span>猎手运营</span>
-        </a>
-        <a class="nav-item" href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">
-          <span>基金运营</span>
-        </a>
+        <section class="platform-group">
+          <button class="platform-toggle" type="button" aria-expanded="false" aria-controls="hunter-menu">
+            <span>猎手运营</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="submenu" id="hunter-menu">
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">首页</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">今日待办</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">数据摘要</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">待确认广告任务</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">异常提醒</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">数据报表</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">内容创作</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">用户洞察</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">活动策划</a>
+            <a href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer">智能工作流</a>
+          </div>
+        </section>
+
+        <section class="platform-group">
+          <button class="platform-toggle" type="button" aria-expanded="false" aria-controls="fund-menu">
+            <span>基金运营</span>
+            <span class="chevron" aria-hidden="true"></span>
+          </button>
+          <div class="submenu fund-menu" id="fund-menu">
+            <a href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">社群概览</a>
+            <a href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">新人手册</a>
+            <a href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">知识库</a>
+            <a href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">基金速查</a>
+            <a href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">周会记录</a>
+            <a href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">基金活动</a>
+            <a href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer">内容生成</a>
+          </div>
+        </section>
       </nav>
     </aside>
-
-    <section class="workspace" aria-label="跳转入口">
-      <div class="intro">
-        <p class="eyebrow">请选择平台</p>
-        <h2>猎手运营、基金运营</h2>
-        <p>这里仅作为统一跳转入口。两个平台保持独立运行，后续内容迭代不影响本页面。</p>
-      </div>
-
-      <div class="cards" role="list">
-        <article class="platform-card hunter" role="listitem">
-          <div class="card-top">
-            <span class="card-icon" aria-hidden="true">猎</span>
-            <span class="status">Codex</span>
-          </div>
-          <h3>猎手运营</h3>
-          <p>打开现有猎手运营平台，继续处理广告铺设、素材、日报与运营流程。</p>
-          <a class="open-link" href="https://czs-ops.github.io/hunter-work-center/" target="_blank" rel="noopener noreferrer" aria-label="新标签页打开猎手运营">
-            新标签页打开
-          </a>
-        </article>
-
-        <article class="platform-card fund" role="listitem">
-          <div class="card-top">
-            <span class="card-icon" aria-hidden="true">基</span>
-            <span class="status">Workbuddy</span>
-          </div>
-          <h3>基金运营</h3>
-          <p>打开现有基金运营平台，进入独立的基金运营工作区。</p>
-          <a class="open-link" href="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" target="_blank" rel="noopener noreferrer" aria-label="新标签页打开基金运营">
-            新标签页打开
-          </a>
-        </article>
-      </div>
-    </section>
+    <section class="workspace" aria-label="运营中台空白区域"></section>
   </main>
+
+  <script>
+    document.querySelectorAll(".platform-toggle").forEach((button) => {
+      button.addEventListener("click", () => {
+        const isExpanded = button.getAttribute("aria-expanded") === "true";
+        button.setAttribute("aria-expanded", String(!isExpanded));
+      });
+    });
+  </script>
 </body>
 </html>
