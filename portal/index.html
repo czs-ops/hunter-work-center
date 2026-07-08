@@ -39,8 +39,8 @@
       <div class="status-toast" id="status-toast" hidden>
         <span id="status-title">正在打开平台</span>
       </div>
-      <iframe class="content-frame" id="hunter-frame" title="猎手运营" src="https://czs-ops.github.io/hunter-work-center/" hidden></iframe>
-      <iframe class="content-frame" id="fund-frame" title="基金运营" src="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" hidden></iframe>
+      <iframe class="content-frame" id="hunter-frame" title="猎手运营" src="https://czs-ops.github.io/hunter-work-center/"></iframe>
+      <iframe class="content-frame" id="fund-frame" title="基金运营" src="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work"></iframe>
     </section>
   </main>
 
@@ -67,7 +67,7 @@
 
     function hideFrames() {
       Object.values(frames).forEach((frame) => {
-        frame.hidden = true;
+        frame.classList.remove("is-active");
       });
       activeFrameId = "";
     }
@@ -94,7 +94,7 @@
       hideFrames();
       activeFrameId = frameId;
       frame.title = title;
-      frame.hidden = false;
+      frame.classList.add("is-active");
       setActiveButton(title);
       showStatus(loadedFrames.has(frameId) ? `已切换到${title}` : `正在打开${title}`);
     }
