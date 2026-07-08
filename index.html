@@ -1,0 +1,810 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>猎手运营中台</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark"></div>
+        <div>
+          <strong>猎手运营中台</strong>
+          <span>工作中心</span>
+        </div>
+      </div>
+      <nav class="nav" aria-label="主导航">
+        <div class="nav-group active">
+          <button class="nav-item active" data-view="home">
+            <span class="icon">⌂</span>
+            <span>首页</span>
+          </button>
+          <div class="subnav">
+            <button data-view="home" data-anchor="homeTodo">今日待办</button>
+            <button data-view="home" data-anchor="homeSummary">数据摘要</button>
+            <button data-view="home" data-anchor="homeTasks">待确认广告任务</button>
+            <button data-view="home" data-anchor="homeExceptions">异常提醒</button>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button class="nav-item" data-view="content">
+            <span class="icon">▣</span>
+            <span>内容创作</span>
+          </button>
+          <div class="subnav">
+            <button data-view="content" data-anchor="communityCopy">社群文案</button>
+            <button data-view="content" data-anchor="pushTemplates">Push 标题/摘要</button>
+            <button data-view="content" data-anchor="activityCopy">活动话术</button>
+            <button data-view="content" data-anchor="liveCopy">直播/课程链接话术</button>
+            <button data-view="content" data-anchor="materialNotesPanel">素材备注</button>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button class="nav-item" data-view="audience">
+            <span class="icon">♟</span>
+            <span>用户洞察</span>
+          </button>
+          <div class="subnav">
+            <button data-view="audience" data-anchor="audienceManage">人群分组管理</button>
+            <button data-view="audience" data-anchor="highAudiencePanel">高点击人群记录</button>
+            <button data-view="audience" data-anchor="lowAudiencePanel">低效人群记录</button>
+            <button data-view="audience" data-anchor="backendAudiencePanel">后台目标用户备注</button>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button class="nav-item" data-view="campaign">
+            <span class="icon">▥</span>
+            <span>活动策划</span>
+          </button>
+          <div class="subnav">
+            <button data-view="campaign" data-anchor="campaignCycle">活动周期</button>
+            <button data-view="campaign" data-anchor="dailyMaterials">每日素材链接</button>
+            <button data-view="campaign" data-anchor="promotionRhythmPanel">推广节奏</button>
+            <button data-view="campaign" data-anchor="channelPlanPanel">四类渠道计划</button>
+            <button data-view="campaign" data-anchor="campaignReviewPanel">活动复盘</button>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button class="nav-item" data-view="reports">
+            <span class="icon">▤</span>
+            <span>数据报表</span>
+          </button>
+          <div class="subnav">
+            <button data-view="reports" data-anchor="reportSource">后台广告统计入口</button>
+            <button data-view="reports" data-anchor="dataImportPanel,dailyReportPanel">数据导入/手动录入</button>
+            <button data-view="reports" data-anchor="dailyHeaderPanel,dailyDetailPanel">日报</button>
+            <button data-view="reports" data-anchor="weeklyReportPanel">周报</button>
+            <button data-view="reports" data-anchor="monthlyReportPanel">月报</button>
+            <button data-view="reports" data-anchor="problemMaterialPanel">问题素材分析</button>
+            <button data-view="reports" data-anchor="communityCopyReportPanel">社群文案分析</button>
+          </div>
+        </div>
+        <div class="nav-group">
+          <button class="nav-item" data-view="workflow">
+            <span class="icon">⌘</span>
+            <span>智能工作流</span>
+          </button>
+          <div class="subnav">
+            <button data-view="workflow" data-anchor="workflowConfigPanel,workflowTasksPanel">广告计划</button>
+            <button data-view="workflow" data-anchor="workflowTasksPanel">T01 普通广告</button>
+            <button data-view="workflow" data-anchor="workflowTasksPanel">T02 App弹窗广告</button>
+            <button data-view="workflow" data-anchor="workflowTasksPanel">T03 PC弹窗广告</button>
+            <button data-view="workflow" data-anchor="pushConfigPanel">T04 Push</button>
+            <button data-view="workflow" data-anchor="placementProgressPanel">铺设进度</button>
+            <button data-view="workflow" data-anchor="executionResultPanel">异常处理</button>
+            <button data-view="workflow" data-anchor="executionResultPanel">执行结果</button>
+          </div>
+        </div>
+      </nav>
+      <div class="side-note">
+        <span>默认产品</span>
+        <strong>猎手活动</strong>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <button class="icon-btn" id="collapseSidebar" title="收起侧栏">☰</button>
+        <div>
+          <h1 id="pageTitle">首页</h1>
+          <p id="pageSubtitle">今日计划、广告任务、数据入口和异常提醒集中处理。</p>
+        </div>
+        <div class="top-actions">
+          <span class="version-badge">已更新：子栏目可定位版</span>
+          <a class="ghost-link" href="https://zt.jingzhuan.cn/zt#/operation/circle/sheet/operate/adstat" target="_blank" rel="noreferrer">广告统计后台</a>
+          <button class="primary-btn" id="saveAll">保存</button>
+        </div>
+      </header>
+
+      <section class="view active" id="home">
+        <div class="hero-panel">
+          <div>
+            <p class="eyebrow">Hunter Ops</p>
+            <h2>把猎手每天的运营动作串成一条可追踪流程</h2>
+            <p>统一目标日、来源日、广告任务、Push 文案、日报数据和异常记录。第一版先做计划与确认，不直接自动铺设或发送。</p>
+          </div>
+          <div class="date-card">
+            <label for="targetDate">目标日期</label>
+            <input type="date" id="targetDate">
+            <span>来源日期：<strong id="sourceDateText">-</strong></span>
+            <button class="primary-btn" id="generateTasks">生成今日任务</button>
+          </div>
+        </div>
+
+        <div class="metric-grid">
+          <article class="metric-card">
+            <span>待确认任务</span>
+            <strong id="pendingCount">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>验证完成</span>
+            <strong id="doneCount">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>异常任务</span>
+            <strong id="errorCount">0</strong>
+          </article>
+          <article class="metric-card">
+            <span>日报记录</span>
+            <strong id="reportCount">0</strong>
+          </article>
+        </div>
+
+        <div class="ops-grid">
+          <section class="panel" id="homeTasks">
+            <div class="panel-head">
+              <h3>今日铺设总控</h3>
+              <span class="pill warn">先确认后执行</span>
+            </div>
+            <div class="control-stack">
+              <div>
+                <span>产品/广告分组</span>
+                <strong>猎手活动</strong>
+              </div>
+              <div>
+                <span>统一来源规则</span>
+                <strong>目标日前 1 天</strong>
+              </div>
+              <div>
+                <span>自动化边界</span>
+                <strong>计划、查重、记录；暂不自动发送</strong>
+              </div>
+              <div>
+                <span>后台数据</span>
+                <a href="https://zt.jingzhuan.cn/zt#/operation/circle/sheet/operate/adstat" target="_blank" rel="noreferrer">广告统计页</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel wide" id="communityCopy">
+            <div class="panel-head">
+              <h3>后台入口矩阵</h3>
+              <span class="pill">四类渠道</span>
+            </div>
+            <div class="entry-grid">
+              <article>
+                <strong>普通广告</strong>
+                <p>广告管理 -> 普通广告</p>
+                <span>添加广告 / 创建副本 / 批量审核 / 批量替换信息</span>
+              </article>
+              <article>
+                <strong>App 弹窗广告</strong>
+                <p>广告管理 -> APP弹窗广告</p>
+                <span>添加弹窗 / 创建副本 / 模拟用户加载广告</span>
+              </article>
+              <article>
+                <strong>PC 弹窗广告</strong>
+                <p>PC客户端 -> 弹窗推送</p>
+                <span>创建 / 创建副本 / 批量创建 / 批量替换图片</span>
+              </article>
+              <article>
+                <strong>Push</strong>
+                <p>股票APP -> 通知栏推送</p>
+                <span>添加 / 统计 / 推送计划 / 创建副本；标题摘要必填</span>
+              </article>
+            </div>
+          </section>
+        </div>
+
+        <div class="two-column">
+          <section class="panel" id="homeExceptions">
+            <div class="panel-head">
+              <h3>今日广告任务</h3>
+              <span class="pill">T01-T04</span>
+            </div>
+            <div class="task-list" id="homeTaskList"></div>
+          </section>
+          <section class="panel" id="homeTodo">
+            <div class="panel-head">
+              <h3>异常与备注</h3>
+              <span class="pill soft">可追踪</span>
+            </div>
+            <textarea id="dailyNotes" rows="10" placeholder="记录后台登录态、素材缺失、日期异常、人工确认事项等。"></textarea>
+          </section>
+        </div>
+
+        <div class="section-grid mt">
+          <section class="panel" id="homeSummary">
+            <div class="panel-head">
+              <h3>今日待办</h3>
+              <span class="pill">Checklist</span>
+            </div>
+            <div class="todo-list">
+              <label><input type="checkbox"> 确认目标日期和来源日期</label>
+              <label><input type="checkbox"> 打开广告统计后台查看昨日数据</label>
+              <label><input type="checkbox"> 检查普通广告/App/PC/Push 目标日是否已有</label>
+              <label><input type="checkbox"> 确认 Push 标题、摘要、跳转链接和推送时间</label>
+              <label><input type="checkbox"> 执行后回填创建数量和异常备注</label>
+            </div>
+          </section>
+          <section class="panel" id="pushTemplates">
+            <div class="panel-head">
+              <h3>数据摘要</h3>
+              <button class="secondary-btn" id="refreshSummary">刷新摘要</button>
+            </div>
+            <div class="summary-grid">
+              <div><span>总曝光/弹出</span><strong id="summaryImpressions">0</strong></div>
+              <div><span>总点击</span><strong id="summaryClicks">0</strong></div>
+              <div><span>总成交</span><strong id="summaryDeals">0</strong></div>
+              <div><span>整体点击率</span><strong id="summaryRate">-</strong></div>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="content">
+        <div class="section-grid">
+          <section class="panel wide">
+            <div class="panel-head">
+              <h3>社群文案</h3>
+              <button class="secondary-btn" id="copyContent">复制文案</button>
+            </div>
+            <div class="form-grid">
+              <label>文案类型
+                <select id="copyType">
+                  <option>社群文案</option>
+                  <option>Push 摘要</option>
+                  <option>活动话术</option>
+                  <option>直播/课程链接话术</option>
+                </select>
+              </label>
+              <label>渠道
+                <select id="copyChannel">
+                  <option>社群</option>
+                  <option>股票APP Push</option>
+                  <option>App 弹窗</option>
+                  <option>PC 弹窗</option>
+                </select>
+              </label>
+              <label>当前福利
+                <input id="copyBenefit" placeholder="例如：主题猎手限时权益">
+              </label>
+              <label>链接/占位符
+                <input id="copyLink" placeholder="填写课程、活动或落地页链接">
+              </label>
+            </div>
+            <textarea id="copyDraft" rows="10" placeholder="这里生成或沉淀可复制话术。社群和直播话术默认只生成，不自动发送。"></textarea>
+          </section>
+          <section class="panel" id="materialNotesPanel">
+            <div class="panel-head">
+              <h3>Push 文案模板</h3>
+              <span class="pill warn">标题摘要</span>
+            </div>
+            <div class="template-list">
+              <button class="template-btn" data-template="名额告急！！！|办理主题猎手最高送6个月+1个月，仅剩1000个名额，先到先得，立即抢>>>">名额告急</button>
+              <button class="template-btn" data-template="猎手活动限时开放|主题机会跟踪工具已开放，适合关注短线节奏的用户查看>>>">限时开放</button>
+              <button class="template-btn" data-template="今晚别错过|猎手活动权益更新，点击查看今日可用福利>>>">今晚提醒</button>
+            </div>
+          </section>
+          <section class="panel" id="workflowConfigPanel">
+            <h3>素材备注</h3>
+            <textarea id="materialNotes" rows="14" placeholder="记录主素材、备用素材、特殊尺寸图、二维码、临时补图说明。"></textarea>
+          </section>
+          <section class="panel wide" id="activityCopy">
+            <div class="panel-head">
+              <h3>活动话术</h3>
+              <button class="secondary-btn" data-copy-note="activityCopy">复制</button>
+            </div>
+            <textarea data-note="activityCopy" rows="8" placeholder="沉淀活动预热、爆发、收口阶段话术。"></textarea>
+          </section>
+          <section class="panel" id="liveCopy">
+            <div class="panel-head">
+              <h3>直播/课程链接话术</h3>
+              <button class="secondary-btn" data-copy-note="liveCopy">复制</button>
+            </div>
+            <textarea data-note="liveCopy" rows="8" placeholder="生成置顶或提醒话术，只复制不自动发送、不自动置顶。"></textarea>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="audience">
+        <div class="section-grid">
+          <section class="panel wide" id="audienceManage">
+            <div class="panel-head">
+              <h3>人群分组记录</h3>
+              <button class="secondary-btn" id="addAudienceRow">新增记录</button>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>人群名称/ID</th>
+                    <th>表现</th>
+                    <th>备注</th>
+                  </tr>
+                </thead>
+                <tbody id="audienceRows"></tbody>
+              </table>
+            </div>
+          </section>
+          <section class="panel" id="highAudiencePanel">
+            <h3>洞察原则</h3>
+            <div class="rule-list">
+              <p>只记录和分析，不自动修改后台人群。</p>
+              <p>高效图、低效图必须同产品、同渠道、同人群比较。</p>
+              <p>人群异常要回到任务编号和广告 ID。</p>
+            </div>
+          </section>
+          <section class="panel" id="lowAudiencePanel">
+            <h3>高点击人群记录</h3>
+            <textarea data-note="highAudience" rows="10" placeholder="记录点击率、成交、适合广告图方向和对应广告 ID。"></textarea>
+          </section>
+          <section class="panel">
+            <h3>低效人群记录</h3>
+            <textarea data-note="lowAudience" rows="10" placeholder="记录弹出高但点击低、点击为 0、成交差的人群。"></textarea>
+          </section>
+          <section class="panel wide" id="backendAudiencePanel">
+            <h3>后台目标用户备注</h3>
+            <textarea data-note="backendAudienceNote" rows="8" placeholder="粘贴后台目标用户分组、UID 说明、特殊排除人群和人工确认备注。"></textarea>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="campaign">
+        <div class="section-grid">
+          <section class="panel wide" id="campaignCycle">
+            <h3>活动周期</h3>
+            <div class="form-grid">
+              <label>活动阶段
+                <input id="campaignPhase" placeholder="例如：预热 / 爆发 / 收口">
+              </label>
+              <label>开始日期
+                <input data-note="campaignStart" type="date">
+              </label>
+              <label>结束日期
+                <input data-note="campaignEnd" type="date">
+              </label>
+              <label>主素材链接或路径
+                <input id="mainMaterial" placeholder="可填文件夹路径、网页链接或备注">
+              </label>
+              <label>备用素材链接或路径
+                <input id="backupMaterial" placeholder="可填文件夹路径、网页链接或备注">
+              </label>
+              <label>特殊素材说明
+                <input id="specialMaterial" placeholder="特殊尺寸、过期图、二维码、临时补图">
+              </label>
+            </div>
+            <textarea id="campaignPlan" rows="12" placeholder="记录每日推广节奏、素材安排、人工确认事项和复盘结论。"></textarea>
+          </section>
+          <section class="panel">
+            <h3>猎手固定配置</h3>
+            <div class="config-list">
+              <p><span>后台产品名</span><strong>猎手活动</strong></p>
+              <p><span>广告分组</span><strong>猎手活动</strong></p>
+              <p><span>产品别名</span><strong>无</strong></p>
+              <p><span>长期广告</span><strong>无</strong></p>
+              <p><span>来源规则</span><strong>目标日前 1 天</strong></p>
+            </div>
+          </section>
+          <section class="panel wide" id="dailyMaterials">
+            <div class="panel-head">
+              <h3>每日素材链接</h3>
+              <span class="pill soft">手动维护</span>
+            </div>
+            <div class="form-grid">
+              <label>普通广告素材
+                <input data-note="normalMaterial" placeholder="普通广告素材链接/路径">
+              </label>
+              <label>App 弹窗素材
+                <input data-note="appMaterial" placeholder="App 弹窗素材链接/路径">
+              </label>
+              <label>PC 弹窗素材
+                <input data-note="pcMaterial" placeholder="PC 弹窗素材链接/路径">
+              </label>
+              <label>Push 素材/封面
+                <input data-note="pushMaterial" placeholder="Push 封面或素材链接/路径">
+              </label>
+            </div>
+          </section>
+          <section class="panel" id="promotionRhythmPanel">
+            <h3>推广节奏</h3>
+            <textarea data-note="promotionRhythm" rows="10" placeholder="记录每天普通广告、App弹窗、PC弹窗、Push 的推广节奏。"></textarea>
+          </section>
+          <section class="panel" id="channelPlanPanel">
+            <h3>渠道计划</h3>
+            <textarea data-note="channelPlan" rows="10" placeholder="普通广告/App弹窗/PC弹窗/Push 的计划、目标人群和注意事项。"></textarea>
+          </section>
+          <section class="panel wide" id="campaignReviewPanel">
+            <h3>活动复盘</h3>
+            <textarea data-note="campaignReview" rows="8" placeholder="记录活动结束后的数据表现、素材结论、人群结论和下次优化方向。"></textarea>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="reports">
+        <div class="section-grid">
+          <section class="panel wide" id="reportSource">
+            <div class="panel-head">
+              <h3>广告数据入口</h3>
+              <div class="button-row">
+                <a class="secondary-btn" href="https://zt.jingzhuan.cn/zt#/operation/circle/sheet/operate/adstat" target="_blank" rel="noreferrer">打开后台</a>
+                <button class="secondary-btn" id="loadBackendData">加载后台数据</button>
+              </div>
+            </div>
+            <div class="report-source">
+              <div>
+                <span>默认筛选</span>
+                <strong>广告分组 = 猎手活动</strong>
+              </div>
+              <div>
+                <span>可分析字段</span>
+                <strong>广告ID、标题、图片、人群、弹出数、点击数、订单、成交</strong>
+              </div>
+              <div>
+                <span>第一版方式</span>
+                <strong>从后台查看后录入关键行，后续再接自动读取</strong>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h3>日报日期</h3>
+            <div class="form-grid single">
+              <label>当前日期
+                <input id="reportCurrentDate" type="date">
+              </label>
+              <label>对比日期
+                <input id="reportCompareDate" type="date">
+              </label>
+            </div>
+            <p class="hint">日期可自由选择；即使没有数据，也不会自动改回已有日期。</p>
+          </section>
+
+          <section class="panel">
+            <h3>日报规则</h3>
+            <div class="rule-list compact">
+              <p>普通广告不进入换图策略。</p>
+              <p>App/PC 弹窗只在同产品、同渠道、同人群内比较。</p>
+              <p>低效图：样本足够且点击率低，或弹出高但点击为 0。</p>
+              <p>社群文案标签固定按当前项目：猎手活动。</p>
+            </div>
+          </section>
+
+          <section class="panel wide" id="dataImportPanel">
+            <div class="panel-head">
+              <h3>数据导入</h3>
+              <button class="secondary-btn" id="importReportData">导入到日报</button>
+            </div>
+            <textarea id="dataImportText" rows="7" placeholder="可从后台表格复制后粘贴。建议列包含：广告ID、渠道、标题、人群、弹出数、点击数、成交数。"></textarea>
+          </section>
+
+          <section class="panel wide" id="dailyReportPanel">
+            <div class="panel-head">
+              <h3>日报数据录入</h3>
+              <div class="button-row">
+                <button class="secondary-btn" id="addReportRow">新增数据</button>
+                <button class="secondary-btn" id="refreshDailyDetails">刷新日报视图</button>
+              </div>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>广告ID</th>
+                    <th>渠道</th>
+                    <th>标题</th>
+                    <th>人群</th>
+                    <th>弹出数</th>
+                    <th>点击数</th>
+                    <th>成交数</th>
+                    <th>点击率</th>
+                  </tr>
+                </thead>
+                <tbody id="reportRows"></tbody>
+              </table>
+            </div>
+          </section>
+          <section class="panel wide" id="dailyDetailPanel">
+            <div class="panel-head">
+              <h3>猎手活动日报总览</h3>
+              <div class="button-row">
+                <button class="secondary-btn" id="exportWord">导出 Word</button>
+                <button class="secondary-btn" id="exportExcel">导出 Excel</button>
+                <button class="secondary-btn" id="exportPpt">导出 PPT</button>
+              </div>
+            </div>
+            <div class="daily-dashboard">
+              <div class="daily-kpis" id="dailyKpis"></div>
+              <div class="daily-block" id="marketBriefPanel">
+                <h4>行情简述</h4>
+                <div class="market-brief">
+                  <div class="market-card" id="marketBriefText"></div>
+                  <div class="market-mini-chart" id="marketMiniChart"></div>
+                </div>
+              </div>
+              <div class="daily-block">
+                <h4>成交漏斗</h4>
+                <div class="funnel-list" id="dailyFunnel"></div>
+              </div>
+              <div class="daily-block">
+                <h4>渠道拆分</h4>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>渠道</th>
+                        <th>曝光/弹出</th>
+                        <th>点击</th>
+                        <th>点击率</th>
+                        <th>成交</th>
+                      </tr>
+                    </thead>
+                    <tbody id="channelBreakdown"></tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="daily-block">
+                <div class="panel-head inner">
+                  <h4>问题素材 TOP</h4>
+                  <button class="secondary-btn" id="addIssuesTodo">加入待办</button>
+                </div>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>素材</th>
+                        <th>广告ID</th>
+                        <th>渠道</th>
+                        <th>标题</th>
+                        <th>人群</th>
+                        <th>曝光/弹出</th>
+                        <th>点击率</th>
+                        <th>成交</th>
+                        <th>建议替换图</th>
+                        <th>创新方向</th>
+                        <th>待办</th>
+                      </tr>
+                    </thead>
+                    <tbody id="issueTopRows"></tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="daily-block">
+                <h4>命中人群拆分</h4>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>人群</th>
+                        <th>广告数</th>
+                        <th>曝光/弹出</th>
+                        <th>点击</th>
+                        <th>点击率</th>
+                        <th>成交</th>
+                      </tr>
+                    </thead>
+                    <tbody id="audienceBreakdown"></tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="daily-block">
+                <h4>复盘记录</h4>
+                <textarea id="reviewArchive" rows="6" placeholder="保存日报复盘：问题原因、明日动作、素材待办、后台异常。"></textarea>
+              </div>
+            </div>
+          </section>
+          <section class="panel" id="dailyDraftPanel">
+            <div class="panel-head">
+              <h3>日报草稿</h3>
+              <button class="secondary-btn" id="buildReport">生成</button>
+            </div>
+            <textarea id="reportDraft" rows="16" placeholder="根据录入数据生成日报草稿。"></textarea>
+          </section>
+          <section class="panel wide" id="strategyPanel">
+            <div class="panel-head">
+              <h3>问题素材 TOP / App-PC 策略</h3>
+              <button class="secondary-btn" id="buildStrategy">生成策略</button>
+            </div>
+            <div class="strategy-list" id="strategyList"></div>
+          </section>
+          <section class="panel wide" id="dailyHeaderPanel">
+            <div class="daily-report-header">
+              <div>
+                <h3>日报表</h3>
+                <p id="dailyHeaderDesc">日报日期、对比日期、项目和口径由猎手活动后台数据生成。</p>
+              </div>
+              <div class="daily-filter-grid">
+                <label>项目筛选
+                  <select id="dailyProjectSelect">
+                    <option>猎手活动</option>
+                  </select>
+                </label>
+                <label>当前日期
+                  <input id="dailyCurrentDate" type="date">
+                </label>
+                <label>对比日期
+                  <input id="dailyCompareDate" type="date">
+                </label>
+                <label>日报口径
+                  <select id="dailyScope">
+                    <option>APP+PC全部</option>
+                    <option>APP弹窗广告</option>
+                    <option>PC弹窗广告</option>
+                    <option>普通广告</option>
+                    <option>Push</option>
+                  </select>
+                </label>
+                <label>预警阈值
+                  <input id="dailyWarnThreshold" type="number" value="10000">
+                </label>
+              </div>
+              <div class="button-row daily-actions">
+                <button class="secondary-btn" id="refreshDailyData">刷新数据</button>
+                <button class="secondary-btn" id="copyDailyReport">复制日报</button>
+                <button class="secondary-btn" id="downloadDailyWord">下载Word</button>
+                <button class="secondary-btn" id="downloadDailyExcel">下载Excel</button>
+                <button class="primary-btn" id="downloadDailyPpt">下载PPT</button>
+              </div>
+            </div>
+          </section>
+          <section class="panel wide" id="communityCopyReportPanel">
+            <div class="panel-head">
+              <h3>社群文案分析</h3>
+              <div class="button-row">
+                <a class="secondary-btn" href="https://zt.jingzhuan.cn/#/operation/circle/qiwei/material" target="_blank" rel="noreferrer">打开素材管理</a>
+                <button class="secondary-btn" id="buildCommunityCopy">生成分析</button>
+              </div>
+            </div>
+            <div class="report-source community-source">
+              <div>
+                <span>后台路径</span>
+                <strong>企业微信 -> 素材管理</strong>
+              </div>
+              <div>
+                <span>项目标签</span>
+                <strong>猎手活动</strong>
+              </div>
+              <div>
+                <span>统计口径</span>
+                <strong>文案总数、使用人数合计、平均使用人数、TOP3 文案摘要</strong>
+              </div>
+            </div>
+            <textarea id="communityCopyInput" rows="7" placeholder="可从素材管理复制文案数据后粘贴。建议列包含：内容、使用人数、创建时间、状态。"></textarea>
+            <div class="community-summary" id="communitySummary"></div>
+          </section>
+          <section class="panel" id="weeklyReportPanel">
+            <h3>周报</h3>
+            <textarea data-note="weeklyReport" rows="10" placeholder="汇总本周渠道表现、素材表现、问题人群和下周计划。"></textarea>
+          </section>
+          <section class="panel" id="monthlyReportPanel">
+            <h3>月报</h3>
+            <textarea data-note="monthlyReport" rows="10" placeholder="汇总本月活动节奏、广告表现、素材沉淀和复盘结论。"></textarea>
+          </section>
+          <section class="panel wide" id="problemMaterialPanel">
+            <h3>问题素材分析</h3>
+            <textarea data-note="problemMaterialAnalysis" rows="8" placeholder="记录低效广告 ID、图片方向、目标人群、问题原因、推荐替代方向。"></textarea>
+          </section>
+        </div>
+      </section>
+
+      <section class="view" id="workflow">
+        <div class="workflow-grid">
+          <section class="panel">
+            <div class="panel-head">
+              <h3>任务配置器</h3>
+              <span class="pill">人工确认</span>
+            </div>
+            <label>目标日期
+              <input type="date" id="workflowTargetDate">
+            </label>
+            <label>主素材链接/路径
+              <input id="workflowMaterial" placeholder="文件夹路径、网页链接或备注">
+            </label>
+            <label>查重后动作
+              <select id="duplicateAction">
+                <option>目标日已有则跳过</option>
+                <option>目标日已有则人工复核</option>
+                <option>只生成计划不执行</option>
+              </select>
+            </label>
+            <button class="primary-btn full" id="generateWorkflowTasks">生成 T01-T04</button>
+            <div class="checklist">
+              <label><input type="checkbox"> 已确认后台登录态</label>
+              <label><input type="checkbox"> 已确认目标日</label>
+              <label><input type="checkbox"> 已确认素材链接</label>
+              <label><input type="checkbox"> 已确认 Push 标题摘要</label>
+            </div>
+          </section>
+
+          <section class="panel wide" id="workflowTasksPanel">
+            <div class="panel-head">
+              <h3>广告计划</h3>
+              <div class="button-row">
+                <button class="secondary-btn" id="runSelected">标记验证中</button>
+                <button class="secondary-btn" id="clearErrors">清除异常</button>
+              </div>
+            </div>
+            <div class="task-board" id="workflowTasks"></div>
+          </section>
+
+          <section class="panel wide" id="pushConfigPanel">
+            <div class="panel-head">
+              <h3>Push 文案配置</h3>
+              <span class="pill warn">发送前确认</span>
+            </div>
+            <div class="form-grid">
+              <label>Push 标题
+                <input id="pushTitle" placeholder="例如：名额告急！！！">
+              </label>
+              <label>Push 摘要
+                <input id="pushSummary" placeholder="填写摘要，执行前必须人工确认">
+              </label>
+              <label>跳转网址
+                <input id="pushUrl" placeholder="https://...">
+              </label>
+              <label>计划推送时间
+                <input id="pushTime" type="datetime-local">
+              </label>
+              <label>平台
+                <select id="pushPlatform">
+                  <option>全部</option>
+                  <option>iOS</option>
+                  <option>Android</option>
+                </select>
+              </label>
+              <label>额外推送 UID
+                <input id="pushUid" placeholder="多个 UID 用英文逗号分隔">
+              </label>
+            </div>
+          </section>
+
+          <section class="panel wide" id="executionResultPanel">
+            <div class="panel-head">
+              <h3>执行结果与异常处理</h3>
+              <span class="pill soft">回查记录</span>
+            </div>
+            <div class="result-grid">
+              <label>执行结果
+                <textarea id="executionResult" rows="6" placeholder="记录每个任务实际创建数量、跳过原因、后台回查结果。"></textarea>
+              </label>
+              <label>异常原因
+                <textarea id="exceptionNote" rows="6" placeholder="记录登录态失效、素材缺失、接口字段变化、日期错配等。"></textarea>
+              </label>
+            </div>
+          </section>
+          <section class="panel wide" id="placementProgressPanel">
+            <div class="panel-head">
+              <h3>铺设进度</h3>
+              <span class="pill">按编号串行</span>
+            </div>
+            <div class="progress-lanes">
+              <article><strong>T01 普通广告</strong><span>待确认 -> 查重 -> 创建/复制 -> 回查 -> 结果</span></article>
+              <article><strong>T02 App弹窗广告</strong><span>待确认 -> 查重 -> 创建副本 -> 素材确认 -> 回查</span></article>
+              <article><strong>T03 PC弹窗广告</strong><span>待确认 -> 查重 -> 批量创建/副本 -> 图片确认 -> 回查</span></article>
+              <article><strong>T04 Push</strong><span>标题摘要确认 -> 推送时间确认 -> 创建计划 -> 回查</span></article>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./data/hunter-adstat-data.js"></script>
+  <script src="./data/hunter-community-copy-data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
