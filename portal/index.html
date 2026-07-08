@@ -18,74 +18,98 @@
       </div>
 
       <nav class="platform-nav" aria-label="运营平台">
-        <section class="platform-group">
-          <button class="platform-toggle" type="button" aria-expanded="false" aria-controls="hunter-menu">
-            <span>猎手运营</span>
-            <span class="chevron" aria-hidden="true"></span>
-          </button>
-          <div class="submenu" id="hunter-menu">
-            <button class="submenu-item" type="button" data-title="猎手运营 - 首页" data-url="https://czs-ops.github.io/hunter-work-center/">首页</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 今日待办" data-url="https://czs-ops.github.io/hunter-work-center/">今日待办</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 数据摘要" data-url="https://czs-ops.github.io/hunter-work-center/">数据摘要</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 待确认广告任务" data-url="https://czs-ops.github.io/hunter-work-center/">待确认广告任务</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 异常提醒" data-url="https://czs-ops.github.io/hunter-work-center/">异常提醒</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 数据报表" data-url="https://czs-ops.github.io/hunter-work-center/">数据报表</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 内容创作" data-url="https://czs-ops.github.io/hunter-work-center/">内容创作</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 用户洞察" data-url="https://czs-ops.github.io/hunter-work-center/">用户洞察</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 活动策划" data-url="https://czs-ops.github.io/hunter-work-center/">活动策划</button>
-            <button class="submenu-item" type="button" data-title="猎手运营 - 智能工作流" data-url="https://czs-ops.github.io/hunter-work-center/">智能工作流</button>
-          </div>
-        </section>
-
-        <section class="platform-group">
-          <button class="platform-toggle" type="button" aria-expanded="false" aria-controls="fund-menu">
-            <span>基金运营</span>
-            <span class="chevron" aria-hidden="true"></span>
-          </button>
-          <div class="submenu fund-menu" id="fund-menu">
-            <button class="submenu-item" type="button" data-title="基金运营 - 社群概览" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">社群概览</button>
-            <button class="submenu-item" type="button" data-title="基金运营 - 新人手册" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">新人手册</button>
-            <button class="submenu-item" type="button" data-title="基金运营 - 知识库" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">知识库</button>
-            <button class="submenu-item" type="button" data-title="基金运营 - 基金速查" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">基金速查</button>
-            <button class="submenu-item" type="button" data-title="基金运营 - 周会记录" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">周会记录</button>
-            <button class="submenu-item" type="button" data-title="基金运营 - 基金活动" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">基金活动</button>
-            <button class="submenu-item" type="button" data-title="基金运营 - 内容生成" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">内容生成</button>
-          </div>
-        </section>
+        <button class="nav-button is-active" type="button" data-view="home">
+          <span class="nav-icon" aria-hidden="true">⌂</span>
+          <span>聚合首页</span>
+        </button>
+        <button class="nav-button" type="button" data-title="猎手运营" data-url="https://czs-ops.github.io/hunter-work-center/">
+          <span class="nav-icon" aria-hidden="true">猎</span>
+          <span>猎手运营</span>
+        </button>
+        <button class="nav-button" type="button" data-title="基金运营" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">
+          <span class="nav-icon" aria-hidden="true">基</span>
+          <span>基金运营</span>
+        </button>
       </nav>
     </aside>
+
     <section class="workspace" aria-label="运营内容展示区">
-      <div class="empty-state" id="empty-state">
-        <h2>请选择左侧栏目</h2>
-        <p>内容会在当前页面右侧展示。</p>
-      </div>
+      <section class="portal-home" id="portal-home" aria-label="聚合首页">
+        <div class="home-header">
+          <p class="eyebrow">运营总览</p>
+          <h2>聚合工作台</h2>
+          <p>统一承载猎手运营和基金运营。两个平台内容保持独立迭代，聚合页只负责入口和总览。</p>
+        </div>
+
+        <div class="overview-grid" aria-label="运营数据总览">
+          <article class="overview-card">
+            <span class="card-label">运营数据总览</span>
+            <strong>待接入</strong>
+            <p>后续可汇总关键指标、趋势和异常提醒。</p>
+          </article>
+          <article class="overview-card">
+            <span class="card-label">今日待办工作台</span>
+            <strong>待接入</strong>
+            <p>后续可汇总两个平台当天需要处理的任务。</p>
+          </article>
+          <article class="overview-card">
+            <span class="card-label">平台状态</span>
+            <strong>2 个平台</strong>
+            <p>猎手运营、基金运营继续独立运行。</p>
+          </article>
+        </div>
+
+        <div class="launch-grid" aria-label="平台入口">
+          <button class="launch-card hunter-card" type="button" data-title="猎手运营" data-url="https://czs-ops.github.io/hunter-work-center/">
+            <span>猎手运营</span>
+            <strong>进入平台</strong>
+          </button>
+          <button class="launch-card fund-card" type="button" data-title="基金运营" data-url="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work">
+            <span>基金运营</span>
+            <strong>进入平台</strong>
+          </button>
+        </div>
+      </section>
+
       <iframe class="content-frame" id="content-frame" title="运营内容展示" hidden></iframe>
     </section>
   </main>
 
   <script>
-    document.querySelectorAll(".platform-toggle").forEach((button) => {
-      button.addEventListener("click", () => {
-        const isExpanded = button.getAttribute("aria-expanded") === "true";
-        button.setAttribute("aria-expanded", String(!isExpanded));
-      });
-    });
-
     const frame = document.getElementById("content-frame");
-    const emptyState = document.getElementById("empty-state");
+    const home = document.getElementById("portal-home");
+    const navButtons = document.querySelectorAll(".nav-button");
 
-    document.querySelectorAll(".submenu-item").forEach((item) => {
-      item.addEventListener("click", () => {
-        document.querySelectorAll(".submenu-item.is-active").forEach((activeItem) => {
-          activeItem.classList.remove("is-active");
-        });
-        item.classList.add("is-active");
-        frame.title = item.dataset.title;
-        frame.src = item.dataset.url;
-        frame.hidden = false;
-        emptyState.hidden = true;
+    function setActiveButton(title) {
+      navButtons.forEach((button) => {
+        const isHome = button.dataset.view === "home" && title === "聚合首页";
+        const isPlatform = button.dataset.title === title;
+        button.classList.toggle("is-active", isHome || isPlatform);
+      });
+    }
+
+    function showHome() {
+      frame.hidden = true;
+      frame.removeAttribute("src");
+      home.hidden = false;
+      setActiveButton("聚合首页");
+    }
+
+    function showPlatform(title, url) {
+      home.hidden = true;
+      frame.title = title;
+      frame.src = url;
+      frame.hidden = false;
+      setActiveButton(title);
+    }
+
+    document.querySelectorAll("[data-url]").forEach((button) => {
+      button.addEventListener("click", () => {
+        showPlatform(button.dataset.title, button.dataset.url);
       });
     });
+
+    document.querySelector('[data-view="home"]').addEventListener("click", showHome);
   </script>
 </body>
 </html>
