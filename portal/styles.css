@@ -28,13 +28,13 @@ body {
 
 .shell {
   display: grid;
-  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-columns: 148px minmax(0, 1fr);
   min-height: 100vh;
 }
 
 .sidebar {
   min-height: 100vh;
-  padding: 20px 10px;
+  padding: 18px 8px;
   background: var(--nav);
   color: #fff;
 }
@@ -42,8 +42,8 @@ body {
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 0 12px 22px;
+  gap: 8px;
+  padding: 0 6px 20px;
 }
 
 .brand-mark,
@@ -55,24 +55,26 @@ body {
 }
 
 .brand-mark {
-  width: 44px;
-  height: 44px;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
   color: #162031;
   background: var(--active);
 }
 
 .nav-icon {
-  width: 28px;
-  height: 28px;
+  flex: 0 0 auto;
+  width: 26px;
+  height: 26px;
   color: #172033;
   background: #eef4ff;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .eyebrow {
   margin: 0 0 3px;
   color: var(--nav-muted);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
 }
 
@@ -84,30 +86,38 @@ p {
 
 h1 {
   margin-bottom: 0;
-  font-size: 22px;
+  font-size: 18px;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .platform-nav {
   display: grid;
-  gap: 10px;
+  gap: 8px;
 }
 
 .nav-button {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 7px;
   width: 100%;
-  min-height: 48px;
-  padding: 0 12px;
+  min-height: 44px;
+  padding: 0 8px;
   border: 1px solid var(--nav-border);
   border-radius: 8px;
   color: #f7fbff;
   background: rgba(255, 255, 255, .08);
   font: inherit;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   cursor: pointer;
+}
+
+.nav-button span:last-child {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .nav-button:hover,
