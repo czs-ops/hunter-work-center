@@ -36,8 +36,8 @@
     <section class="workspace" aria-label="运营内容展示区">
       <section class="portal-home" id="portal-home" aria-label="聚合首页"></section>
 
-      <div class="loading-panel" id="loading-panel" hidden>
-        <strong id="loading-title">正在打开平台</strong>
+      <div class="status-toast" id="status-toast" hidden>
+        <span id="status-title">正在打开平台</span>
       </div>
       <iframe class="content-frame" id="hunter-frame" title="猎手运营" src="https://czs-ops.github.io/hunter-work-center/" hidden></iframe>
       <iframe class="content-frame" id="fund-frame" title="基金运营" src="https://0a8f688b91384b68b411969a2ea710c7.app.codebuddy.work" hidden></iframe>
@@ -46,8 +46,8 @@
 
   <script>
     const home = document.getElementById("portal-home");
-    const loadingPanel = document.getElementById("loading-panel");
-    const loadingTitle = document.getElementById("loading-title");
+    const statusToast = document.getElementById("status-toast");
+    const statusTitle = document.getElementById("status-title");
     const navButtons = document.querySelectorAll(".nav-button");
     const frames = {
       "hunter-frame": document.getElementById("hunter-frame"),
@@ -55,6 +55,7 @@
     };
     const loadedFrames = new Set();
     let activeFrameId = "";
+    let statusTimer = 0;
 
     function setActiveButton(title) {
       navButtons.forEach((button) => {
@@ -73,9 +74,18 @@
 
     function showHome() {
       hideFrames();
-      loadingPanel.hidden = true;
+      statusToast.hidden = true;
       home.hidden = false;
       setActiveButton("聚合首页");
+    }
+
+    function showStatus(text) {
+      window.clearTimeout(statusTimer);
+      statusTitle.textContent = text;
+      statusToast.hidden = false;
+      statusTimer = window.setTimeout(() => {
+        statusToast.hidden = true;
+      }, 1200);
     }
 
     function showPlatform(title, frameId) {
@@ -83,18 +93,17 @@
       home.hidden = true;
       hideFrames();
       activeFrameId = frameId;
-      loadingTitle.textContent = loadedFrames.has(frameId) ? `正在切换到${title}` : `正在打开${title}`;
-      loadingPanel.hidden = loadedFrames.has(frameId);
       frame.title = title;
       frame.hidden = false;
       setActiveButton(title);
+      showStatus(loadedFrames.has(frameId) ? `已切换到${title}` : `正在打开${title}`);
     }
 
     Object.entries(frames).forEach(([frameId, frame]) => {
       frame.addEventListener("load", () => {
         loadedFrames.add(frameId);
         if (activeFrameId === frameId) {
-          loadingPanel.hidden = true;
+          statusToast.hidden = true;
         }
       });
     });
