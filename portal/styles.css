@@ -128,107 +128,7 @@ h1 {
 }
 
 .portal-home {
-  display: grid;
-  align-content: center;
-  gap: 24px;
   min-height: 100vh;
-  padding: 42px 56px;
-}
-
-.home-header {
-  max-width: 760px;
-}
-
-.home-header .eyebrow {
-  color: var(--green);
-}
-
-.home-header h2 {
-  margin-bottom: 12px;
-  font-size: clamp(36px, 5vw, 64px);
-  line-height: 1.08;
-}
-
-.home-header p {
-  max-width: 680px;
-  color: var(--muted);
-  font-size: 17px;
-  line-height: 1.75;
-}
-
-.overview-grid,
-.launch-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(180px, 1fr));
-  gap: 16px;
-  max-width: 1040px;
-}
-
-.launch-grid {
-  grid-template-columns: repeat(2, minmax(220px, 1fr));
-}
-
-.overview-card,
-.launch-card {
-  min-height: 150px;
-  padding: 22px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, .82);
-  box-shadow: var(--shadow);
-}
-
-.card-label,
-.launch-card span {
-  display: block;
-  margin-bottom: 14px;
-  color: var(--muted);
-  font-size: 14px;
-  font-weight: 700;
-}
-
-.overview-card strong {
-  display: block;
-  margin-bottom: 12px;
-  font-size: 28px;
-}
-
-.overview-card p {
-  margin-bottom: 0;
-  color: var(--muted);
-  line-height: 1.6;
-}
-
-.launch-card {
-  display: grid;
-  align-content: space-between;
-  color: #fff;
-  border: 0;
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
-}
-
-.launch-card span {
-  color: rgba(255, 255, 255, .78);
-}
-
-.launch-card strong {
-  font-size: 30px;
-}
-
-.hunter-card {
-  background: linear-gradient(135deg, #168360, #1e9b73);
-}
-
-.fund-card {
-  background: linear-gradient(135deg, #2f68d8, #6188ee);
-}
-
-.launch-card:hover,
-.launch-card:focus-visible {
-  filter: brightness(.96);
-  outline: 3px solid rgba(47, 104, 216, .22);
 }
 
 .content-frame {
@@ -246,16 +146,6 @@ h1 {
 
   .sidebar {
     min-height: auto;
-  }
-
-  .portal-home {
-    min-height: auto;
-    padding: 34px 18px 42px;
-  }
-
-  .overview-grid,
-  .launch-grid {
-    grid-template-columns: 1fr;
   }
 
   .content-frame {
