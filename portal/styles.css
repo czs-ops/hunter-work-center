@@ -127,6 +127,24 @@ h1 {
   overflow: hidden;
 }
 
+.loading-panel {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  color: #223047;
+  background: rgba(238, 243, 247, .92);
+}
+
+.loading-panel strong {
+  padding: 12px 18px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
 .portal-home {
   min-height: 100vh;
 }
