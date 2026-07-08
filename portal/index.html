@@ -36,6 +36,9 @@
     <section class="workspace" aria-label="运营内容展示区">
       <section class="portal-home" id="portal-home" aria-label="聚合首页"></section>
 
+      <div class="loading-panel" id="loading-panel" hidden>
+        <strong id="loading-title">正在打开平台</strong>
+      </div>
       <iframe class="content-frame" id="content-frame" title="运营内容展示" hidden></iframe>
     </section>
   </main>
@@ -43,6 +46,8 @@
   <script>
     const frame = document.getElementById("content-frame");
     const home = document.getElementById("portal-home");
+    const loadingPanel = document.getElementById("loading-panel");
+    const loadingTitle = document.getElementById("loading-title");
     const navButtons = document.querySelectorAll(".nav-button");
 
     function setActiveButton(title) {
@@ -56,25 +61,36 @@
     function showHome() {
       frame.hidden = true;
       frame.removeAttribute("src");
+      loadingPanel.hidden = true;
       home.hidden = false;
       setActiveButton("聚合首页");
     }
 
     function showPlatform(title, url) {
       home.hidden = true;
+      loadingTitle.textContent = `正在打开${title}`;
+      loadingPanel.hidden = false;
       frame.title = title;
-      frame.src = url;
       frame.hidden = false;
+      frame.src = url;
       setActiveButton(title);
     }
 
-    document.querySelectorAll("[data-url]").forEach((button) => {
-      button.addEventListener("click", () => {
-        showPlatform(button.dataset.title, button.dataset.url);
-      });
+    frame.addEventListener("load", () => {
+      loadingPanel.hidden = true;
     });
 
-    document.querySelector('[data-view="home"]').addEventListener("click", showHome);
+    document.querySelector(".platform-nav").addEventListener("click", (event) => {
+      const button = event.target.closest(".nav-button");
+      if (!button) return;
+
+      if (button.dataset.view === "home") {
+        showHome();
+        return;
+      }
+
+      showPlatform(button.dataset.title, button.dataset.url);
+    });
   </script>
 </body>
 </html>
