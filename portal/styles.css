@@ -157,6 +157,12 @@ h1 {
   background: #fff;
 }
 
+.content-frame[hidden],
+.portal-home[hidden],
+.loading-panel[hidden] {
+  display: none;
+}
+
 @media (max-width: 860px) {
   .shell {
     grid-template-columns: 1fr;
