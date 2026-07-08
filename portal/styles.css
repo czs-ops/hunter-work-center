@@ -127,17 +127,17 @@ h1 {
   overflow: hidden;
 }
 
-.loading-panel {
+.status-toast {
   position: absolute;
-  inset: 0;
+  top: 18px;
+  right: 18px;
   z-index: 2;
-  display: grid;
-  place-items: center;
   color: #223047;
-  background: rgba(238, 243, 247, .92);
+  pointer-events: none;
 }
 
-.loading-panel strong {
+.status-toast span {
+  display: block;
   padding: 12px 18px;
   border: 1px solid var(--line);
   border-radius: 8px;
@@ -159,7 +159,7 @@ h1 {
 
 .content-frame[hidden],
 .portal-home[hidden],
-.loading-panel[hidden] {
+.status-toast[hidden] {
   display: none;
 }
 
